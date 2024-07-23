@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Subtitle Adder</title>
+</head>
+<body>
+    <h1>Online Subtitle Adder</h1>
+    <form id="form">
+        <label for="url">Video URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Add Subtitles</button>
+    </form>
+    <video id="video" controls>
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const url = document.getElementById('url').value;
+            const video = document.getElementById('video');
+            video.src = `/stream?url=${encodeURIComponent(url)}`;
+        });
+    </script>
+</body>
+</html>
